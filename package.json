@@ -1,0 +1,12 @@
+{
+	"name": "vue-combat",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"commit": "powershell ./commit.cmd"
+	},
+	"keywords": [],
+	"author": "shuwang",
+	"license": "MIT",
+	"description": ""
+}

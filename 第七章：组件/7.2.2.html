@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7.2.2</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.10/vue.js"></script>
+</head>
+
+<body>
+    <!-- <div id='app'>
+        <my-component :init-count="parentCount"></my-component>
+    </div>
+    <script>
+        Vue.component('my-component', {
+            props: ['initCount'],
+            template: '<div>{{ initCount }}</div>',
+            data: function () {
+                console.log(this)
+                return {
+                    count: this.initCount
+                }
+            }
+        })
+        var app = new Vue({
+            el: '#app ',
+            data: {
+                parentCount: 1000
+            }
+        })
+    </script> -->
+
+    <div id="app">
+        <input v-model="parentData.name" type="text" />
+        <span>{{parentData.name}}</span>
+        <my-component :parent-data='parentData'></my-component>
+        <my-component2 parent-count='this is parent'></my-component2>
+    </div>
+    <script>
+        Vue.component('my-component', {
+            props: ['parentData'],
+            template: '<div><input v-model="childData.name" type="text" /><span>{{childData.name}}</span></div>',
+            data: function () {
+                return {
+                    childData: JSON.parse(JSON.stringify(this.parentData))
+                }
+            }
+        })
+        Vue.component('my-component2', {
+            props: ['parentCount'],
+            template: '<div>{{count}}</div>',
+            data: function () {
+                console.log(this.parentCount)
+                return {
+                    count: this.parentCount
+                }
+            }
+        })
+        new Vue({
+            el: "#app",
+            data: {
+                parentData: {
+                    name: 'shuwang'
+                },
+                count: 1
+            }
+        })
+    </script>
+</body>
+
+
+</html>

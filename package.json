@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
-		"commit": "powershell ./commit.cmd"
+		"commit": "powershell ./commit.bat"
 	},
 	"keywords": [],
 	"author": "shuwang",
